@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>Formula 1.5 / E-Commerce</title>
+</head>
+
+<body>
+<img th:src="@{/images/logo.png}"/>
+<br/>
+<h3>
+  Confirm your order, <!--span th:text="${loggedUser.name}">USERNAME</span-->
+</h3>
+
+<form method="POST">
+  <div id="articles">
+    <!--div th:each="article : ${dashboard.articles}">
+      <span th:text="${article.name}">Name</span> |
+      <span th:text="${article.description}">Desc</span> |
+      <span th:text="${article.price}">Price</span>
+      <span th:text="${article.currency}">Currency</span> ->
+      <span th:text="${article.desiredQuantity}">Quantity</span>
+      <br/>
+    </div-->
+  </div>
+  <button>Confirm</button>
+</form>
+</body>
+</html>

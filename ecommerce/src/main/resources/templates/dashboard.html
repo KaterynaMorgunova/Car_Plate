@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>Formula 1.5 / E-Commerce</title>
+</head>
+
+<body>
+<img th:src="@{/images/logo.png}"/>
+<br/>
+    <h3>
+      Make you choice, <span th:text="${loggedUser.name}">USERNAME</span>
+    </h3>
+
+    <form method="POST" th:object="${dashboard}">
+        <div id="articles">
+            <div th:each="article : ${availableArticles}">
+                <input th:field="*{articles}" type="checkbox"
+                       th:value="${article.id}"/>
+                <span th:text="${article.name}">ARTICLE</span> |
+                <span th:text="${article.description}">ARTICLE</span> |
+                <span th:text="${article.price}">ARTICLE</span>
+                <span th:text="${article.currency}">ARTICLE</span>
+                <br/>
+            </div>
+        </div>
+        <button>Order</button>
+    </form>
+</body>
+</html>
