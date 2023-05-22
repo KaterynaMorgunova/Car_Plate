@@ -1,15 +1,17 @@
 package com.f1dot5.dashboard;
 
+import com.f1dot5.data.Article;
+import com.f1dot5.data.CartArticle;
+import lombok.AccessLevel;
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Data
+@AllArgsConstructor
+@NoArgsConstructor(access= AccessLevel.PRIVATE, force=true)
 public class DashboardArticle {
-    private final String id;
-    private final String name;
-    private final String description;
-    private final String imageUrl;
-    private final float price;
-    private final String currency;
-    private final int availableQuantity;
-    private final int desiredQuantity;
+    private boolean checked = false;
+    private CartArticle cartArticle;
+    private Article article;
 }

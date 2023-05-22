@@ -9,20 +9,46 @@
 <img th:src="@{/images/logo.png}"/>
 <br/>
     <h3>
-      Make you choice, <span th:text="${loggedUser.name}">USERNAME</span>
+      Make you choice, <span th:text="${session.loggedUser}">USERNAME</span>
     </h3>
-
     <form method="POST" th:object="${dashboard}">
         <div id="articles">
-            <div th:each="article : ${availableArticles}">
-                <input th:field="*{articles}" type="checkbox"
-                       th:value="${article.id}"/>
-                <span th:text="${article.name}">ARTICLE</span> |
-                <span th:text="${article.description}">ARTICLE</span> |
-                <span th:text="${article.price}">ARTICLE</span>
-                <span th:text="${article.currency}">ARTICLE</span>
-                <br/>
-            </div>
+            <table>
+                <thead>
+                <tr>
+                    <th></th>
+                    <th>Article</th>
+                    <th>Quantity</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="item, itemStat : *{dashboardArticles}">
+                    <td>
+                        <input
+                                type="checkbox"
+                                th:field="*{dashboardArticles[__${itemStat.index}__].checked}"
+                                th:value="${item.checked}"
+                        />
+                        <span th:text="${item.cartArticle.article}">ARTICLE</span>
+                    </td>
+                    <td>
+                        <img th:src="${item.article.imageUrl}"/>
+                        <span th:text="${item.article.name}">NAME</span>
+                        <span th:text="${item.article.description}">DESC</span> |
+                        <span th:text="${item.article.price}">PRICE</span>
+                        <span th:text="${item.article.currency}">CURRENCY</span>
+                    </td>
+                    <td>
+                        <input  type="number"
+                                th:field="*{dashboardArticles[__${itemStat.index}__].cartArticle.quantity}"
+                                th:value="${item.cartArticle.quantity}"
+                                min="0"
+                                th:max="${item.article.availableQuantity}"
+                        />
+                    </td>
+                </tr>
+                </tbody>
+            </table>
         </div>
         <button>Order</button>
     </form>
