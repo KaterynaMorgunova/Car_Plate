@@ -9,7 +9,7 @@
 <img th:src="@{/images/logo.png}"/>
 <br/>
     <h3>
-      Make you choice, <span th:text="${session.loggedUser}">USERNAME</span>
+      Make you choice, <span th:text="${session.loggedUser.name}">USERNAME</span>
     </h3>
     <form method="POST" th:object="${dashboard}">
         <div id="articles">
