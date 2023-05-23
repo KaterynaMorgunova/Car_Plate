@@ -10,8 +10,7 @@ import java.util.function.Function;
 import java.util.stream.Collectors;
 
 @Component
-public class DashboardArticleByIdConverter implements Converter<String, CartArticle> {
-//public class DashboardArticleByIdConverter implements Converter<String, DashboardArticle> {
+public class DashboardManager {
 
     public static List<CartArticle> ALL_CART_ARTICLES = Arrays.asList(
             new CartArticle(1L, 1, null),
@@ -30,33 +29,21 @@ public class DashboardArticleByIdConverter implements Converter<String, CartArti
     );
 
     private static Article getArticleById(Long id) {
-        return DashboardArticleByIdConverter.ALL_ARTICLES.stream().filter(x -> x.getId().equals(id)).findFirst().get();
+        return DashboardManager.ALL_ARTICLES.stream().filter(x -> x.getId().equals(id)).findFirst().get();
     }
 
     public static List<DashboardArticle> dashboardArticles() {
 
-        List<DashboardArticle> result = DashboardArticleByIdConverter.ALL_CART_ARTICLES
+        List<DashboardArticle> result = DashboardManager.ALL_CART_ARTICLES
                 .stream().map(new Function<CartArticle, DashboardArticle>() {
                     @Override
                     public DashboardArticle apply(CartArticle cartArticle) {
-                        DashboardArticle result = new DashboardArticle(false, cartArticle, DashboardArticleByIdConverter.getArticleById(cartArticle.getArticle()));
+                        DashboardArticle result = new DashboardArticle(false, cartArticle, DashboardManager.getArticleById(cartArticle.getArticle()));
                         return result;
                     }
                 })
                 .collect(Collectors.toList());
         return result;
     }
-
-    @Override
-    public CartArticle convert(String id) {
-//    public DashboardArticle convert(String id) {
-        return DashboardArticleByIdConverter.dashboardArticles().stream()
-                .map(x -> x.getCartArticle())
-                .filter( x -> x.getArticle().toString().equals(id))
-//                .filter( x -> x.getArticle().toString().equals(id))
-                .findFirst()
-                .get();
-    }
-
 }
 

@@ -1,5 +1,6 @@
 package com.f1dot5.data;
 
+import lombok.Data;
 import org.hibernate.validator.constraints.CreditCardNumber;
 
 import javax.validation.constraints.Digits;
@@ -9,6 +10,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+@Data
 public class CustomerDelivery {
 
     private Long id;
@@ -38,7 +40,7 @@ public class CustomerDelivery {
 
     @Digits(integer=3, fraction=0, message="Invalid CVV")
     private String ccCVV;
-    private Long customer;
+    private Customer customer;
     private CartOrder cartOrder;
 }
 

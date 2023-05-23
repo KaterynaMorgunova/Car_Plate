@@ -13,8 +13,8 @@ create table if not exists Customer (
   created_at timestamp not null,
   name varchar(50) not null,
   phone varchar(255),
-  email varchar(255) not null,
-  password not null
+  email varchar(255),
+  password varchar(50) not null
 );
 
 create table if not exists Customer_Delivery (
@@ -42,7 +42,7 @@ create table if not exists Cart_Order (
 
 create table if not exists Cart_Article (
   id identity,
-  created_at timestamp not null
+  created_at timestamp not null,
   customer varchar(50) not null,
   article bigint not null,
   quantity int not null,

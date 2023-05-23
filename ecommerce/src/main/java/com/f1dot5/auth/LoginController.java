@@ -1,6 +1,8 @@
 package com.f1dot5.auth;
 
 import com.f1dot5.data.CartOrder;
+import com.f1dot5.data.repository.CustomerRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.*;
@@ -14,7 +16,13 @@ import javax.validation.Valid;
 @RequestMapping("/login")
 @SessionAttributes({"loggedUser"})
 public class LoginController {
+    private final CustomerRepository customerRepo;
 
+    @Autowired
+    public LoginController(
+            CustomerRepository customerRepo) {
+        this.customerRepo = customerRepo;
+    }
     @ModelAttribute(name = "loggedUser")
     public LoginUser user() {
         return new LoginUser();

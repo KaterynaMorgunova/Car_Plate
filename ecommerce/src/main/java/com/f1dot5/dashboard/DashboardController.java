@@ -1,5 +1,6 @@
 package com.f1dot5.dashboard;
 
+import com.f1dot5.auth.LoginUser;
 import com.f1dot5.data.CartArticle;
 import com.f1dot5.data.CartOrder;
 import org.springframework.stereotype.Controller;
@@ -20,7 +21,7 @@ public class DashboardController {
 
     @ModelAttribute
     public void addArticlesToModel(Model model) {
-        List<DashboardArticle> availableArticles = DashboardArticleByIdConverter.dashboardArticles();
+        List<DashboardArticle> availableArticles = DashboardManager.dashboardArticles();
         model.addAttribute("availableArticles", availableArticles);
     }
 
@@ -32,7 +33,7 @@ public class DashboardController {
     @ModelAttribute(name = "dashboard")
     public Dashboard dashboard() {
         Dashboard result = new Dashboard();
-        result.setDashboardArticles(DashboardArticleByIdConverter.dashboardArticles());
+        result.setDashboardArticles(DashboardManager.dashboardArticles());
         return result;
     }
 
@@ -45,7 +46,8 @@ public class DashboardController {
     public String processDashboard(
             @ModelAttribute Dashboard dashboard,
             Errors errors,
-            @ModelAttribute CartOrder cartOrder
+            @ModelAttribute CartOrder cartOrder,
+            @ModelAttribute LoginUser loggedUser
             ) {
 
         if (errors.hasErrors()) {
