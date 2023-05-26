@@ -14,6 +14,10 @@
 
     <div class="grid">
         <h3>Enter credentials:</h3>
+        <span class="validationError"
+              th:if="${loggedUser.authenticationError}"
+              th:text="${loggedUser.authenticationError}">Auth Error
+        </span>
         <br/>
         Username: <input type="text" th:field="*{name}"/>
         <span class="validationError"

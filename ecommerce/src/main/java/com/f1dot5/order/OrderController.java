@@ -1,31 +1,39 @@
 package com.f1dot5.order;
 
-import com.f1dot5.auth.LoginUser;
 import com.f1dot5.data.CartOrder;
 import com.f1dot5.data.Customer;
 import com.f1dot5.data.CustomerDelivery;
+import com.f1dot5.data.repository.CustomerDeliveryRepository;
+import com.f1dot5.data.repository.CustomerRepository;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.web.servlet.server.Session;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.bind.support.SessionStatus;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
+import java.util.Date;
 
 @Slf4j
 @Controller
 @RequestMapping("/order")
-@SessionAttributes({"cartOrder", "loggedUser"})
+@SessionAttributes({"cartOrder", "customer"})
 public class OrderController {
+    private final CustomerDeliveryRepository customerDeliveryRepo;
+
+    @Autowired
+    public OrderController(
+            CustomerDeliveryRepository customerDeliveryRepo) {
+        this.customerDeliveryRepo = customerDeliveryRepo;
+    }
 
     @ModelAttribute(name = "customerDelivery")
     public CustomerDelivery customerDelivery() {
         return new CustomerDelivery();
-    }
-
-    @ModelAttribute(name = "customer")
-    public Customer customer() {
-        return new Customer();
     }
 
     @GetMapping("/current")
@@ -37,19 +45,28 @@ public class OrderController {
     public String processOrder(
             @Valid  @ModelAttribute CustomerDelivery customerDelivery,
             Errors errors,
-            @ModelAttribute LoginUser loggedUser,
             @ModelAttribute CartOrder cartOrder,
-            SessionStatus sessionStatus
+            @ModelAttribute Customer customer,
+            HttpServletRequest request
     ) {
 
         if (errors.hasErrors()) {
             return "orderForm";
         }
 
+        customerDelivery.setCustomer(customer.getName());
         customerDelivery.setCartOrder(cartOrder);
 
         log.info("Processing order: {}", customerDelivery);
-        sessionStatus.setComplete();
+
+        CustomerDelivery delivery = customerDeliveryRepo.save(customerDelivery);
+
+        if (delivery == null) {
+//            user.setAuthenticationError("Can't create user");
+            return "orderForm";
+        }
+
+        request.getSession().removeAttribute("cartOrder");
 
         return "redirect:/dashboard";
     }

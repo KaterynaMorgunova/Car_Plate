@@ -13,7 +13,7 @@ import java.util.Date;
 public class CartArticle {
     private Long article;
     private int quantity = 1;
-//    private Long cartOrder;
+    private Long cartOrder;
     private Date createdAt;
-//    private Long customer;
+    private String customer;
 }

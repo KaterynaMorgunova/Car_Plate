@@ -20,20 +20,19 @@ public class JdbcCustomerRepository implements CustomerRepository {
     }
 
     @Override
-    public Optional<Customer> findByName(String name) {
+    public Customer findByCredentials(String name, String password) {
         List<Customer> results = jdbcTemplate.query(
-                "select name, phone, email, password, createdAt from Customer where name=?",
+                "select name, phone, email, created_at from Customer where name=? and password=?",
                 this::mapRowToCustomer,
-                name);
-        return results.size() == 0 ?
-                Optional.empty() :
-                Optional.of(results.get(0));
+                name,
+                password);
+        return results.size() == 0 ? null : results.get(0);
     }
 
     @Override
     public Customer save(Customer customer) {
         jdbcTemplate.update(
-                "insert into Customer (name, phone, email, password, createdAt) values (?, ?, ?, ?, ?)",
+                "insert into Customer (name, phone, email, password, created_at) values (?, ?, ?, ?, ?)",
                 customer.getName(),
                 customer.getPhone(),
                 customer.getEmail(),
@@ -46,9 +45,9 @@ public class JdbcCustomerRepository implements CustomerRepository {
     private Customer mapRowToCustomer(ResultSet row, int rowNum)
             throws SQLException {
         return new Customer(
-                new java.util.Date(row.getDate("createdAt").getTime()),
+                new java.util.Date(row.getDate("created_at").getTime()),
                 row.getString("name"),
-                row.getString("password"),
+                null, // don't use saved password
                 row.getString("phone"),
                 row.getString("email")
         );

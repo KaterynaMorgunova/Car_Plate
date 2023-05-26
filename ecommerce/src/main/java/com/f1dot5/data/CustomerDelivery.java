@@ -14,7 +14,7 @@ import java.util.List;
 public class CustomerDelivery {
 
     private Long id;
-    private Date placedAt;
+    private Date createdAt;
 
     @NotBlank(message="Delivery name is required")
     private String deliveryName;
@@ -40,7 +40,7 @@ public class CustomerDelivery {
 
     @Digits(integer=3, fraction=0, message="Invalid CVV")
     private String ccCVV;
-    private Customer customer;
+    private String customer;
     private CartOrder cartOrder;
 }
 

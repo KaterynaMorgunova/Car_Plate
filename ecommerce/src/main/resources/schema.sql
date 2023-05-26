@@ -27,7 +27,7 @@ create table if not exists Customer_Delivery (
   cc_number varchar(16) not null,
   cc_expiration varchar(5) not null,
   cc_cvv varchar(3) not null,
-  placed_at timestamp not null,
+  created_at timestamp not null,
   customer varchar(50) not null
 );
 
@@ -36,7 +36,6 @@ create table if not exists Cart_Order (
   total_price decimal(12,2) not null,
   currency varchar(3) not null,
   customer_delivery bigint not null,
-  customer_delivery_key bigint not null,
   created_at timestamp not null
 );
 
@@ -46,8 +45,7 @@ create table if not exists Cart_Article (
   customer varchar(50) not null,
   article bigint not null,
   quantity int not null,
-  cart_order bigint,
-  cart_order_key bigint
+  cart_order bigint
 );
 
 alter table Customer_Delivery

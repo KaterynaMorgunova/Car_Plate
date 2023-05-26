@@ -2,14 +2,15 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:th="http://www.thymeleaf.org">
 <head>
-  <title>Formula 1.5 / E-Commerce</title>
+    <title>Formula 1.5 / E-Commerce</title>
+    <link rel="stylesheet" th:href="@{/styles.css}" />
 </head>
 
 <body>
 <img th:src="@{/images/logo.png}"/>
 <br/>
 <h3>
-  Confirm your order, <span th:text="${session.loggedUser.name}">USERNAME</span>
+  Confirm your order, <span th:text="${session.customer.name}">USERNAME</span>
 </h3>
 
     <form method="POST" th:action="@{/order}" th:object="${customerDelivery}">

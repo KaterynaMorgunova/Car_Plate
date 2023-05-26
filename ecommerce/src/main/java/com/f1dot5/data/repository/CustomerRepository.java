@@ -6,7 +6,7 @@ import java.util.Optional;
 
 public interface CustomerRepository {
 
-    Optional<Customer> findByName(String name);
+    Customer findByCredentials(String name, String password);
 
     Customer save(Customer customer);
 }

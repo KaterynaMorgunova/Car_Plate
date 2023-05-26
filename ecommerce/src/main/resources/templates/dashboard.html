@@ -2,15 +2,21 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:th="http://www.thymeleaf.org">
 <head>
-  <title>Formula 1.5 / E-Commerce</title>
+    <title>Formula 1.5 / E-Commerce</title>
+    <link rel="stylesheet" th:href="@{/styles.css}" />
 </head>
 
 <body>
 <img th:src="@{/images/logo.png}"/>
 <br/>
     <h3>
-      Make you choice, <span th:text="${session.loggedUser.name}">USERNAME</span>
+      Make you choice, <span th:text="${session.customer.name}">USERNAME</span>
     </h3>
+    <span class="validationError"
+          th:if="${dashboard.error}"
+          th:text="${dashboard.error}">Dashboard Error
+        </span>
+    <br/>
     <form method="POST" th:object="${dashboard}">
         <div id="articles">
             <table>
@@ -32,7 +38,7 @@
                         <span th:text="${item.cartArticle.article}">ARTICLE</span>
                     </td>
                     <td>
-                        <img th:src="${item.article.imageUrl}"/>
+                        <img width="30" height="30" th:src="${item.article.imageUrl}"/>
                         <span th:text="${item.article.name}">NAME</span>
                         <span th:text="${item.article.description}">DESC</span> |
                         <span th:text="${item.article.price}">PRICE</span>
