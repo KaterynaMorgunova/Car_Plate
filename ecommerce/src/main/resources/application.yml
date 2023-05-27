@@ -3,4 +3,8 @@ spring:
   datasource:
     generate-unique-name: false
     name: f1dot5app
+#    url: jdbc:sqlserver://localhost:1433/WBA_DatabaseConcepts
+#    port:1433
+#    username: sa
+#    password: тв008Ьщк142Ф
 #end::setDatabaseName[]
