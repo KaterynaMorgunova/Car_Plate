@@ -3,7 +3,7 @@ spring:
   datasource:
     generate-unique-name: false
     name: f1dot5app
-#    url: jdbc:sqlserver://localhost:1433/WBA_DatabaseConcepts
+#    url: jdbc:sqlserver://localhost:1433/WBA_DatabaseConcepts;encrypt=true;trustServerCertificate=true
 #    port:1433
 #    username: sa
 #    password: тв008Ьщк142Ф
