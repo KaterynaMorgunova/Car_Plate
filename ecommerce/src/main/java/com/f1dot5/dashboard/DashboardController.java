@@ -69,7 +69,15 @@ public class DashboardController {
                 .map(x -> x.getCartArticle())
                 .collect(Collectors.toList());
 
+        float total = desiredArticles
+                .stream()
+                .map(x -> x.getCartArticle().getQuantity()
+                        * x.getArticle().getPrice())
+                .reduce(0.0f, (subtotal, x) -> subtotal
+                        + x);
+
         cartOrder.setCartArticles(cartArticles);
+        cartOrder.setTotalPrice(total);
         cartOrder.setCurrency(desiredArticles.stream().findFirst().get().getArticle().getCurrency());
         log.info("Processing dashboard: {}", dashboard);
 

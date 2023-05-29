@@ -19,22 +19,27 @@
           th:text="${loggedUser.authenticationError}">Auth Error
     </span>
     <br/>
+    <table>
+        <tr>
+            <td><input type="text" th:field="*{name}"/></td>
+            <td><span class="validationError"
+                      th:if="${#fields.hasErrors('name')}"
+                      th:errors="*{name}">Name Error
+            </span></td>
+        </tr>
 
-    <input type="text" th:field="*{name}"/>
-    <span class="validationError"
-          th:if="${#fields.hasErrors('name')}"
-          th:errors="*{name}">Name Error
-    </span>
-    <br/>
+        <tr>
+            <td><input type="text" th:field="*{password}"/></td>
+            <td><span class="validationError"
+                      th:if="${#fields.hasErrors('password')}"
+                      th:errors="*{password}">Password Error
+            </span></td>
+        </tr>
 
-    <input type="text" th:field="*{password}"/>
-    <span class="validationError"
-          th:if="${#fields.hasErrors('password')}"
-          th:errors="*{password}">Password Error
-    </span>
-    <br/>
-
-    <button>Login</button>
+        <tr>
+            <td colspan="2"><button>Login</button></td>
+        </tr>
+    </table>
     </div>
 
 </form>

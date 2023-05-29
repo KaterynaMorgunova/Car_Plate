@@ -19,35 +19,43 @@
               th:text="${loggedUser.authenticationError}">Auth Error
         </span>
         <br/>
-        Username: <input type="text" th:field="*{name}"/>
-        <span class="validationError"
-              th:if="${#fields.hasErrors('name')}"
-              th:errors="*{name}">Name Error
-        </span>
-        <br/>
-        Password:
-        <input type="text" th:field="*{password}"/>
-        <span class="validationError"
-              th:if="${#fields.hasErrors('password')}"
-              th:errors="*{password}">Password Error
-        </span>
-        <br/>
-        EMail:
-        <input type="text" th:field="*{email}"/>
-        <span class="validationError"
-              th:if="${#fields.hasErrors('email')}"
-              th:errors="*{email}">EMail Error
-        </span>
-        <br/>
-        Phone:
-        <input type="text" th:field="*{phone}"/>
-        <span class="validationError"
-              th:if="${#fields.hasErrors('phone')}"
-              th:errors="*{phone}">EMail Error
-        </span>
-        <br/>
+        <table>
+            <tr>
+                <td>Username: <input type="text" th:field="*{name}"/></td>
+                <td><span class="validationError"
+                          th:if="${#fields.hasErrors('name')}"
+                          th:errors="*{name}">Name Error
+                </span></td>
+            </tr>
+            <tr>
+                <td>Password:
+                    <input type="text" th:field="*{password}"/></td>
+                <td><span class="validationError"
+                          th:if="${#fields.hasErrors('password')}"
+                          th:errors="*{password}">Password Error
+                </span></td>
+            </tr>
+            <tr>
+                <td>EMail:
+                    <input type="text" th:field="*{email}"/></td>
+                <td><span class="validationError"
+                          th:if="${#fields.hasErrors('email')}"
+                          th:errors="*{email}">EMail Error
+                </span></td>
+            </tr>
+            <tr>
+                <td>Phone:
+                    <input type="text" th:field="*{phone}"/></td>
+                <td><span class="validationError"
+                          th:if="${#fields.hasErrors('phone')}"
+                          th:errors="*{phone}">EMail Error
+                </span></td>
+            </tr>
+            <tr>
+                <td colspan="2"><button>Sign Up</button></td>
+            </tr>
 
-        <button>Sign Up</button>
+        </table>
     </div>
 
 </form>

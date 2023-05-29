@@ -1,3 +1,5 @@
+-- H2 embedded SQL schema
+
 create table if not exists Article (
   id bigint not null,
   created_at timestamp not null,
