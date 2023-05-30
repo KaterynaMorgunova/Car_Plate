@@ -24,7 +24,9 @@
 * Add the Admin panel for managing Article store
 * Improve the Web UI with more friendly UX (add navigations between sections, etc)
 * Technical: Migrate to JPA from JDBC template (let Hybernate manage ORM instead of manual SQL)
-* Technical: Migrate to JPA from JDBC template (let Hybernate manage ORM instead of manual SQL)  
+* Technical: Improve source code documentation by following this rules https://www.jetbrains.com/help/idea/working-with-code-documentation.html  
+* Technical: Create unit tests for implemented functionality
+
 
 For further reference, please consider the following sections:
 * [Project source code documentation](../documentation/index.html)
