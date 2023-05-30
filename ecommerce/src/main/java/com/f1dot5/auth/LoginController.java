@@ -1,11 +1,9 @@
 package com.f1dot5.auth;
 
-import com.f1dot5.data.CartOrder;
 import com.f1dot5.data.Customer;
 import com.f1dot5.data.repository.CustomerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.*;
 

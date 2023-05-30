@@ -6,9 +6,7 @@ import org.hibernate.validator.constraints.CreditCardNumber;
 import javax.validation.constraints.Digits;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Pattern;
-import java.util.ArrayList;
 import java.util.Date;
-import java.util.List;
 
 @Data
 public class CustomerDelivery {
@@ -41,6 +39,6 @@ public class CustomerDelivery {
     @Digits(integer=3, fraction=0, message="Invalid CVV")
     private String ccCVV;
     private String customer;
-    private CartOrder cartOrder;
+    private SalesInvoice salesInvoice;
 }
 

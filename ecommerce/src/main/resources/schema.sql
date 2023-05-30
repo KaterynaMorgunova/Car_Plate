@@ -33,7 +33,7 @@ create table if not exists Customer_Delivery (
   customer varchar(50) not null
 );
 
-create table if not exists Cart_Order (
+create table if not exists Sales_Invoice (
   id identity,
   total_price decimal(12,2) not null,
   currency varchar(3) not null,
@@ -47,13 +47,13 @@ create table if not exists Cart_Article (
   customer varchar(50) not null,
   article bigint not null,
   quantity int not null,
-  cart_order bigint
+  sales_invoice bigint
 );
 
 alter table Customer_Delivery
     add foreign key (customer) references Customer(name);
 
-alter table Cart_Order
+alter table Sales_Invoice
     add foreign key (customer_delivery) references Customer_Delivery(id);
 
 alter table Cart_Article
@@ -61,5 +61,5 @@ alter table Cart_Article
 alter table Cart_Article
     add foreign key (customer) references Customer(name);
 alter table Cart_Article
-    add foreign key (cart_order) references Cart_Order(id);
+    add foreign key (sales_invoice) references Sales_Invoice(id);
 

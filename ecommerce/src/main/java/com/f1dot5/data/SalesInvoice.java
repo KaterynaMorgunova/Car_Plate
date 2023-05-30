@@ -12,7 +12,7 @@ import java.util.List;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor(access= AccessLevel.PUBLIC, force=true)
-public class CartOrder {
+public class SalesInvoice {
     private Long id;
     private Date createdAt = new Date();
     private float totalPrice;

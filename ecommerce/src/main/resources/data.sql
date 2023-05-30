@@ -1,7 +1,7 @@
 -- H2 embedded SQL schema
 
 --delete from Cart_Article;
---delete from Cart_Order;
+--delete from Sales_Invoice;
 --delete from Customer_Delivery;
 --delete from Customer;
 --delete from Article;

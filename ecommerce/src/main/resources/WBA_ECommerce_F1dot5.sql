@@ -31,7 +31,7 @@ create table Customer_Delivery (
   customer varchar(50) not null
 );
 
-create table Cart_Order (
+create table Sales_Invoice (
   id INTEGER IDENTITY(1,1) PRIMARY KEY,
   total_price decimal(12,2) not null,
   currency varchar(3) not null,
@@ -45,13 +45,13 @@ create table Cart_Article (
   customer varchar(50) not null,
   article INTEGER not null,
   quantity int not null,
-  cart_order INTEGER
+  sales_invoice INTEGER
 );
 
 alter table Customer_Delivery
     add foreign key (customer) references Customer(name);
 
-alter table Cart_Order
+alter table Sales_Invoice
     add foreign key (customer_delivery) references Customer_Delivery(id);
 
 alter table Cart_Article
@@ -59,7 +59,7 @@ alter table Cart_Article
 alter table Cart_Article
     add foreign key (customer) references Customer(name);
 alter table Cart_Article
-    add foreign key (cart_order) references Cart_Order(id);
+    add foreign key (sales_invoice) references Sales_Invoice(id);
 
 insert into Customer (created_at, name, password, email)
                 values (CURRENT_TIMESTAMP, 'admin', 'admin', 'kateamorh@gmail.com');

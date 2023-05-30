@@ -17,12 +17,12 @@
 
         <h3>Your choice:</h3>
         <ul>
-            <li th:each="item : ${cartOrder.cartArticles}">
+            <li th:each="item : ${salesInvoice.cartArticles}">
                 Acticle #<span th:text="${item.article}">ARTICLE</span>: <span th:text="${item.quantity}">QUANTITY</span>pcs
             </li>
         </ul>
         <br/>
-        <bold>Total: <span th:text="${cartOrder.totalPrice}">TOTAL</span><span th:text="${cartOrder.currency}">CURRENCY</span></bold>
+        <bold>Total: <span th:text="${salesInvoice.totalPrice}">TOTAL</span><span th:text="${salesInvoice.currency}">CURRENCY</span></bold>
 
         <div th:if="${#fields.hasErrors()}">
             <span class="validationError">
