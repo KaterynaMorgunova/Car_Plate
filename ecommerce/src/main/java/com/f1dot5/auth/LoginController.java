@@ -2,12 +2,11 @@ package com.f1dot5.auth;
 
 import com.f1dot5.data.Customer;
 import com.f1dot5.data.repository.CustomerRepository;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.*;
-
-import lombok.extern.slf4j.Slf4j;
 
 import javax.validation.Valid;
 
@@ -48,7 +47,7 @@ public class LoginController {
             return "login";
         }
 
-        Customer dbCustomer = customerRepo.findByCredentials(user.getName(), user.getPassword());
+        Customer dbCustomer = customerRepo.findByNameAndPassword(user.getName(), user.getPassword());
         if (dbCustomer == null) {
             user.setAuthenticationError("Authentication error");
             return "login";

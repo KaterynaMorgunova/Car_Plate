@@ -2,12 +2,11 @@ package com.f1dot5.auth;
 
 import com.f1dot5.data.Customer;
 import com.f1dot5.data.repository.CustomerRepository;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.*;
-
-import lombok.extern.slf4j.Slf4j;
 
 import javax.validation.Valid;
 import java.util.Date;
@@ -51,7 +50,7 @@ public class SignupController {
             return "signup";
         }
 
-        if (this.customerRepo.findByCredentials(user.getName(), user.getPassword()) != null) {
+        if (this.customerRepo.findByNameAndPassword(user.getName(), user.getPassword()) != null) {
             user.setAuthenticationError("User with this name already registered");
             return "signup";
         }

@@ -1,14 +1,13 @@
 package com.f1dot5.dashboard;
 
 import com.f1dot5.data.CartArticle;
-import com.f1dot5.data.SalesInvoice;
 import com.f1dot5.data.Customer;
+import com.f1dot5.data.SalesInvoice;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.*;
-
-import lombok.extern.slf4j.Slf4j;
 
 import javax.validation.Valid;
 import java.util.List;

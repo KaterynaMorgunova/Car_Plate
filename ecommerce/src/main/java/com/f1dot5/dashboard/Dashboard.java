@@ -1,10 +1,8 @@
 package com.f1dot5.dashboard;
 
 import com.f1dot5.auth.LoginUser;
-import com.f1dot5.data.CartArticle;
 import lombok.Data;
 
-import javax.validation.constraints.Size;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;

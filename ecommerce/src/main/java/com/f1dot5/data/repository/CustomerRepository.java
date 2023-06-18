@@ -1,12 +1,9 @@
 package com.f1dot5.data.repository;
 
 import com.f1dot5.data.Customer;
+import org.springframework.data.repository.CrudRepository;
 
-import java.util.Optional;
+public interface CustomerRepository extends CrudRepository<Customer, String> {
 
-public interface CustomerRepository {
-
-    Customer findByCredentials(String name, String password);
-
-    Customer save(Customer customer);
+    Customer findByNameAndPassword(String name, String password);
 }

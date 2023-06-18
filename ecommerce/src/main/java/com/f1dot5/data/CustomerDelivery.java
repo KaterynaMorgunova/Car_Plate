@@ -1,16 +1,22 @@
 package com.f1dot5.data;
 
+import lombok.AccessLevel;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 import org.hibernate.validator.constraints.CreditCardNumber;
 
+import javax.persistence.*;
 import javax.validation.constraints.Digits;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Pattern;
 import java.util.Date;
 
 @Data
+@NoArgsConstructor(access= AccessLevel.PUBLIC, force=true)
+@Entity
 public class CustomerDelivery {
-
+    @Id
+    @GeneratedValue(strategy= GenerationType.AUTO)
     private Long id;
     private Date createdAt;
 
@@ -39,6 +45,12 @@ public class CustomerDelivery {
     @Digits(integer=3, fraction=0, message="Invalid CVV")
     private String ccCVV;
     private String customer;
+    @OneToOne(targetEntity=SalesInvoice.class, cascade = {CascadeType.ALL})
     private SalesInvoice salesInvoice;
+
+    @PrePersist
+    void createdAt() {
+        this.createdAt = new Date();
+    }
 }
 

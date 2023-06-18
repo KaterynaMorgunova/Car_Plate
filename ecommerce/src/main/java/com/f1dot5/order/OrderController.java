@@ -1,8 +1,8 @@
 package com.f1dot5.order;
 
-import com.f1dot5.data.SalesInvoice;
 import com.f1dot5.data.Customer;
 import com.f1dot5.data.CustomerDelivery;
+import com.f1dot5.data.SalesInvoice;
 import com.f1dot5.data.repository.CustomerDeliveryRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;

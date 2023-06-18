@@ -1,4 +1,4 @@
-# Use Markdown Any Decision Records
+# Use Java Language and Spring Boot Framework
 
 ## Context and Problem Statement
 
@@ -6,6 +6,29 @@ We want to record any decisions made in this project independent whether decisio
 Which format and structure should these records follow?
 
 ## Considered Options
+
+Advantages of C#
+C# provides lambda and generics support.
+Language-Integrated Query (LINQ)
+Secure extension methods
+Properties with getting/set methods
+Memory management
+Best in class cross-platform support
+Backward compatibility
+Disadvantages of C#
+Poor GUI
+Must be windows based (C# is an internal part of the .NET framework)
+Software is proprietary; requires an upfront purchase.
+Mostly depends on the .Net framework; less flexible.
+Executes slowly, and the program needs to be compiled every time changes are made.
+Advantages of Java
+Provides detailed documentation
+Offers a large pool of skilled developers
+Allows the development of standard programs and reusable code
+Offers a multi-threaded environment
+Excellent and high performance
+Huge array of 3rd party libraries
+Easy to navigate libraries
 
 * [MADR](https://adr.github.io/madr/) 3.0.0 – The Markdown Any Decision Records
 * [Michael Nygard's template](http://thinkrelevance.com/blog/2011/11/15/documenting-architecture-decisions) – The first incarnation of the term "ADR"
